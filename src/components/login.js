@@ -2,6 +2,7 @@ import { Button, Checkbox, Form, Input, Card, Col, Row } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import logotypePreviewUrl from './logotypePreview.svg';
 
+
 const Login = () => {
   const onFinish = (values) => {
     console.log('Success:', values);

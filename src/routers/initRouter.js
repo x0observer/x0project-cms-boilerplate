@@ -4,8 +4,10 @@ import {
     HistoryAdapter,
     RouterStore,
 } from 'mobx-state-router';
+import { authStore } from '../stores/authStore';
 
 const notFound = createRouterState('notFound');
+const login = createRouterState('login');
 
 // Routes are matched from top to bottom. Make sure they are sequenced
 // in the order of priority. It is generally best to sort them by pattern,
@@ -13,7 +15,24 @@ const notFound = createRouterState('notFound');
 // one or more parameters). For example:
 //     /items
 //     /items/:id
+
+
+// const checkUserSignedIn = async () => {
+//         const authStore = new authStore(RouterStore.options);
+//         if (!authStore.user) {
+//             authStore.setSignInRedirect(login);
+//             return login;
+//         }    
+// };
+
 const routes = [
+
+    {
+        name: 'home',
+        pattern : '/home',
+        //beforeEnter : checkUserSignedIn,
+    }, 
+
     {
         name: 'login',
         pattern: '/',
@@ -24,6 +43,7 @@ const routes = [
     },
     {
         name: 'paymentsList',
+       // name : 'paymentsListUpdated',
         pattern: '/payments',
     }
 ];
