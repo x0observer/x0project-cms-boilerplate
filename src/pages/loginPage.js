@@ -1,16 +1,24 @@
+import React, { useContext } from 'react';
 import { Button, Checkbox, Form, Input, Card, Col, Row } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import logotypePreviewUrl from './logotypePreview.svg';
 import { useRouterStore } from 'mobx-state-router';
-
+import { User } from '../models/user';
+import Password from 'antd/lib/input/Password';
+import AuthStore from '../stores/authStore';
 
 export const LoginPage = () => {
   const routerStore = useRouterStore();
+  const authStore = new AuthStore(routerStore);
   
+
+
 
   const onFinish = (values) => {
     /* TODO: AUTH */
-    routerStore.goTo('paymentsList');
+    authStore.setUser(values);
+    console.log(authStore);
+    
     console.log('Success:', values);
   };
 

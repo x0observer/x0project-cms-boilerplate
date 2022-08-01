@@ -1,9 +1,11 @@
 import React from "react";
-import {LoginPage, NotFoundPage, PaymentsList} from "../pages";
+import {LoginPage, NotFoundPage, PaymentsList, HomePageLayout, PaymentsListUpdated} from "../pages";
 
 export const viewMap = {
+    home: <HomePageLayout/>,
     login : <LoginPage/>,
     notFound : <NotFoundPage/>,
-    paymentsList : <PaymentsList/>
+    paymentsList : <PaymentsList/>,
+    paymentsListUpdated : <PaymentsListUpdated/>
 }
 

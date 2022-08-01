@@ -5,16 +5,17 @@ import reportWebVitals from './reportWebVitals';
 import 'antd/dist/antd.css'
 import { App } from './App';
 
-
-
+import { TransactionProvider } from './contexts/TransactionContext';
 
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+  <TransactionProvider>
   <React.StrictMode>
     <App />
   </React.StrictMode>
+  </TransactionProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

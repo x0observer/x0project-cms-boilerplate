@@ -1,26 +1,21 @@
 
-import { action, makeObservable, observable } from 'mobx';
+import { action, configure, makeObservable, observable } from 'mobx';
 import { createRouterState, RouterState } from 'mobx-state-router';
-import { User } from '../models';
-import { RootStore } from './RootStore';
 
 const defaultState = createRouterState('home');
-const signin = createRouterState('signin');
+const signin = createRouterState('login');
 
 
- 
+ configure({"useDefineForClassFields": true});
 
-export class AuthStore {
-    rootStore: RootStore;
-    user: User;
-
+class AuthStore {
     // Where should we redirect after sign in
+    user = null;
     signInRedirect = defaultState;
 
     constructor(rootStore) {
         makeObservable(this, {
-            user: observable.ref,
-            signInRedirect: observable.ref,
+            user : observable.ref,
             setUser: action,
             clearUser: action,
             setSignInRedirect: action,
@@ -30,7 +25,7 @@ export class AuthStore {
 
     setUser = (user) => {
         this.user = user;
-        this.rootStore.routerStore.goToState(this.signInRedirect);
+        this.rootStore.goToState(this.signInRedirect);
     };
 
     clearUser = () => {
@@ -46,3 +41,5 @@ export class AuthStore {
         this.rootStore.routerStore.goToState(signin);
     }
 }
+
+export default AuthStore;
